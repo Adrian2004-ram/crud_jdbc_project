@@ -48,5 +48,25 @@ public class UserDAOImplSQL implements UserDAO {
         return null;
     }
 
+    @Override
+    public User findByUsername(String username) {
+
+        String sql = """
+                SELECT *
+                FROM user
+                WHERE username = ?
+                """;
+
+        User user = jdbcTemplate.queryForObject(sql, (rs, rowNum) -> User.builder()
+                                                                        .id(rs.getLong("id"))
+                                                                        .username(rs.getString("username"))
+                                                                        .password(rs.getString("password"))
+                                                                        .build(), username);
+
+
+
+        return null;
+    }
+
 
 }
