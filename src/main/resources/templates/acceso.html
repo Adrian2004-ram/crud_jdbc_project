@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso Permitido</title>
+</head>
+<body>
+
+<form method="get" th:action="@{/acceso}">
+
+    <h1>Acceso Permitido</h1>
+    <p>¡Bienvenido, <span th:text="${user}">Usuario</span>!</p>
+
+    <button type="submit">Acceder</button>
+
+</form>
+
+</body>
+</html>

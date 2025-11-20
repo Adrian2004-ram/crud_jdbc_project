@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuario</title>
+    <link rel="stylesheet" th:href="@{/styleGestion.css}"/>
+</head>
+<body>
+
+<form method="get" th:action="@{/gestion}">
+
+    <h1>Gestión de usuarios</h1>
+    <thead>
+    <tr>
+        <th>Usuario</th>
+        <th>Constraseña</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="us : ${users}">
+        <td th:text="${us.username}">Usuario</td>
+        <td th:text="${us.password}">Contraseña</td>
+    </tr>
+    </tbody>
+
+</form>
+
+</body>
+</html>

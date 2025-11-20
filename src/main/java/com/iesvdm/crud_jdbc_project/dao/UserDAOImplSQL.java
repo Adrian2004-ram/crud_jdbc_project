@@ -1,17 +1,21 @@
 package com.iesvdm.crud_jdbc_project.dao;
 
 import com.iesvdm.crud_jdbc_project.model.User;
+import com.iesvdm.crud_jdbc_project.util.HashUtil;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.util.List;
 
 @Repository
 public class UserDAOImplSQL implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;
+
+    private HashUtil hashUtil;
 
     //INYECT DE JdbcTemplate
     public UserDAOImplSQL(JdbcTemplate jdbcTemplate) {
@@ -63,10 +67,25 @@ public class UserDAOImplSQL implements UserDAO {
                                                                         .password(rs.getString("password"))
                                                                         .build(), username);
 
+        return user;
 
-
-        return null;
     }
 
+    @Override
+    public List<User> findAllUsers() {
 
+        String sql = """
+                SELECT *
+                FROM user
+                """;
+
+        List<User> users = jdbcTemplate.query(sql, (rs, rowNum) -> User.builder()
+                                                                .id(rs.getLong("id"))
+                                                                .username(rs.getString("username"))
+                                                                .password(rs.getString("password"))
+                                                                .build());
+
+        return users;
+
+    }
 }
