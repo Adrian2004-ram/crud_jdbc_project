@@ -26,8 +26,8 @@ class CrudJdbcProjectApplicationTests {
     @Test
     void createUserAdminTest() {
 
-        String username = "jose";
-        String password = "1234";
+        String username = "admin";
+        String password = "admin";
 
         String passawordHashed = null;
 

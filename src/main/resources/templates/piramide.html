@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Piramide</title>
+</head>
+<body>
+
+
+<form method="post" th:object="${piramideDTO}" th:action="@{/piramide}">
+
+    <h1>Pinta una pirámide</h1>
+    <br/>
+    <label for="altura">Ingresa la altura de la pirámide: </label>
+    <input id="altura" placeholder="Altura" type="text" th:field="*{altura}" />
+
+    <button type="submit">Acceder</button>
+
+</form>
+</body>
+</html>

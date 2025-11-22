@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+
+    <form method="post" th:object="${user}" th:action="@{/inicio}">
+
+        <label for="username">Ingresa tu nombre de usuario: </label>
+        <input id="username" placeholder="username" type="text" th:field="*{username}" />
+        <br/>
+        <label for="password">Ingresa tu contraseña: </label>
+        <input id="password" placeholder="password" type="password" th:field="*{password}" />
+        <br/>
+
+        <button type="submit">Iniciar Sesión</button>
+
+        <p th:if="${error}" th:text="${error}"></p>
+
+    </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gatitos</title>
+</head>
+<body>
+
+<h1>Pirámide Gatitos</h1>
+
+<form method="get" th:action="@{/gatitos}">
+
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+
+        <div class="piramide" style="">
+
+            <div th:each="i : ${#numbers.sequence(1, piramideDTO.altura)}" style="width: 100%; text-align: center;">
+
+                <img th:each="gato : ${#numbers.sequence(1, i)}" th:src="@{/img/gatito.jpeg}" alt="Gatito" style="width: 69px;"/>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+</body>
+</html>
