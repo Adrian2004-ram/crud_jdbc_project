@@ -1,10 +1,8 @@
 package com.iesvdm.crud_jdbc_project.service;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.iesvdm.crud_jdbc_project.dao.UserDAO;
 import com.iesvdm.crud_jdbc_project.model.User;
 import com.iesvdm.crud_jdbc_project.util.HashUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,6 @@ public class UserService {
     private HashUtil hashUtil;
 
     public boolean find(User user) throws NoSuchAlgorithmException {
-
 
         // Buscamos el usuario en la base de datos
         User found = userDAO.findByUsername(user.getUsername());
@@ -46,7 +43,15 @@ public class UserService {
 
     }
 
+    public void createUser(User user) throws NoSuchAlgorithmException {
 
+        String passHash = hashUtil.hashPassword(user.getPassword());
+
+        user.setPassword(passHash);
+
+        userDAO.create(user);
+
+    }
 
 
 

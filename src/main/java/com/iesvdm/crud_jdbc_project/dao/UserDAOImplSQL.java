@@ -31,7 +31,6 @@ public class UserDAOImplSQL implements UserDAO {
                 """;
 
         String[] ids = {"id"};
-
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(con -> {

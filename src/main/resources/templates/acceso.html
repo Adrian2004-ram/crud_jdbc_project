@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<form method="get" th:action="@{/acceso}">
+<form method="post" th:action="@{/acceso}">
 
     <h1>Acceso Permitido</h1>
-    <p>¡Bienvenido, <span th:text="${user}">Usuario</span>!</p>
+    <p>¡Bienvenido, <span th:text="${user.username}">Usuario</span>!</p>
 
     <button type="submit">Acceder</button>
 

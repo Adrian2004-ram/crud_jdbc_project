@@ -10,20 +10,37 @@
 <form method="get" th:action="@{/gestion}">
 
     <h1>Gestión de usuarios</h1>
-    <thead>
-    <tr>
-        <th>Usuario</th>
-        <th>Constraseña</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="us : ${users}">
-        <td th:text="${us.username}">Usuario</td>
-        <td th:text="${us.password}">Contraseña</td>
-    </tr>
-    </tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Constraseña</th>
+                <br/>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="us : ${users}">
+                <td th:text="${us.username}">Usuario</td>
+                <td th:text="${us.password}">Contraseña</td>
+            </tr>
+        </tbody>
+    </table>
 
 </form>
+<form method="post" th:object="${user}" th:action="@{/gestion}">
+
+    <label for="username">username: </label>
+    <input id="username" placeholder="username" type="text" th:field="*{username}"/>
+    <br/>
+    <label for="password">Ingresa tu contraseña: </label>
+    <input id="password" placeholder="password" type="password" th:field="*{password}"/>
+    <br/>
+
+    <button type="submit">Create user</button>
+
+</form>
+
+
 
 </body>
 </html>
